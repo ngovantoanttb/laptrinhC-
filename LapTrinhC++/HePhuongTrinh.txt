@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+class HePhuongTrinh{
+	private:
+		int a1,b1,c1,a2,b2,c2;
+	public:
+		void get()
+		{
+			cout<<(char)180<<"a1.x + b1.y = c1"<<endl;
+			cout<<(char)180<<"a2.x + b2.y = c2\n\n";
+			cout<<"Nhap lan luot cac he so: "; cin>>a1>>b1>>c1>>a2>>b2>>c2;
+		}
+		void put()
+		{
+			cout<<"\n\nHe ban nhap:\n"
+			cout<<(char)180<<a1<<".x + "<<b1<<".y = "<<c1<<endl;
+			cout<<(char)180<<a2<<".x + "<<b2<<".y = "<<c2<<endl;
+		}
+		void Nghiem()
+		{
+			float d,dx,dy;
+			d=(float)a1*b2-a2*b1;
+			dy=(float)a1*c2-c1*a2;
+			dx=(float)c1*b2-b1*c2;
+			if(d) cout<<"\n\nPhuong trinh co 1 nghiem (x , y) = "<<dx/d<<" , "<<dy/d;
+			else if(dx||dy) cout<<"\n\nPhuong trinh vo nghiem";
+			else cout<<"\n\nPhuong trinh co vo so nghiem";
+		}
+};
+int main()
+{
+	HePhuongTrinh A;
+	A.set();
+	A.put();
+	Nghiem();
+}

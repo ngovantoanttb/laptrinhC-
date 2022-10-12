@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+#include <conio.h>
+#include <Windows.h>
+void gotoxy(int x, int y)
+{
+  static HANDLE h = NULL;  
+  if(!h)
+    h = GetStdHandle(STD_OUTPUT_HANDLE);
+  COORD c = { x, y };  
+  SetConsoleCursorPosition(h,c);
+}
+struct Toado{
+	int x,y;
+};
+struct Game{
+	Toado SN[500];
+	int n,huong;
+	Toado HQ;
+};
+
+void khoitao(Game &A)
+{
+	A.n=4;
+	A.SN[0].x=2; A.SN[0].y=0;
+	A.SN[1].x=1; A.SN[1].y=0;
+	A.SN[2].x=0; A.SN[2].y=0;
+	A.HQ.x=35; 	 A.HQ.y=10;
+	A.huong=0;
+}
+void control(Game &A)
+{
+	if(kbhit())
+	{
+		char a=getch();
+		if(a=='d'||a=='D'||a=='6') A.huong=0;
+		else if(a=='s'||a=='S'||a=='2') A.huong=1;
+		else if(a=='a'||a=='A'||a=='4') A.huong=2;
+		else if(a=='w'||a=='W'||a=='8') A.huong=3;
+	} 
+	if(A.huong==0) A.SN[0].x++;
+	else  if(A.huong==1) A.SN[0].y++;
+	else  if(A.huong==2) A.SN[0].x--;
+	else  if(A.huong==3) A.SN[0].y--;
+	for(int i=A.n;i>0;i--) A.SN[i]=A.SN[i-1];
+}
+void display(Game A)
+{
+	for(int i=0;i<A.n;i++)
+	{
+		gotoxy(A.SN[i].x, A.SN[i].y); printf("%c",2);
+	}gotoxy(A.SN[A.n].x, A.SN[A.n].y); printf(" ");
+	gotoxy(A.HQ.x,A.HQ.y); printf("%c",15);
+}
+void leverup(Game &A)
+{
+	if(A.SN[0].x==A.HQ.x && A.SN[0].y==A.HQ.y)
+	{
+		gotoxy(A.HQ.x,A.HQ.y); printf(" ");
+		A.n++;
+		A.HQ.x=rand()%78+1;
+		A.HQ.y=rand()%23+1;
+	}
+}
+int main()
+{
+	gotoxy(15,10); printf("Su dung phim D->Phai, A->Trai, W->Len, S->Xuong");	getch(); system("cls");
+	Game A;
+	khoitao(A);
+	int over=0;
+	do
+	{
+		 control(A);
+		 display(A);
+		 leverup(A);
+		 if(A.SN[0].x==81||A.SN[0].x==-1||A.SN[0].y==-1||A.SN[0].y==26) over=1;
+	Sleep(100);
+	}while(over==0);
+	gotoxy(35,10); printf("GAME OVER"); Sleep(1000);
+}

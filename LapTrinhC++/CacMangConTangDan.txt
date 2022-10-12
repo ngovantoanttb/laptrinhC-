@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+
+void nhap(int a[], int n)
+{
+ printf("\n\nNhap cac phan tu mang\n--------------------------\n");
+ for(int i =0; i<n; i++)
+ {
+ 	printf("a[%d] = ", i);
+ 	scanf("%d", &a[i]);
+ }
+}
+void sapxep(int a[], int n)
+{
+	
+	for(int i =0; i<n-1; i++)
+		for(int j = i; j<n; j++)
+		{
+			if(a[i] > a[j])
+			{
+				int temp = a[i]; a[i] = a[j];	a[j] =temp;
+			}
+	}	
+	int dem = 0;
+	for(int i = 0; i<n; i++)
+	{
+		dem = 0;
+		if(a[i] == a[i+1])
+		{
+			a[n] = a[i+1];
+			for(int j = i+1; j<=n; j++)
+			{
+			 a[j] = a[j+1];
+			} i--;
+		}
+	}
+	if(n>0) dem = 1;
+	for(int i =0; i<n-1; i++)
+	{
+		if(a[i] >= a[i+1] ) dem++;
+	}
+	printf("\n\n\n\n- Trong a gom %d day con tang dan", dem);
+	int tang = 1;
+	for(int i = 0; i<n; i++)
+	{
+		if(i == 0)
+		{
+		printf("\n   +Day %d: ", tang);
+	  	tang++;
+		}
+	   printf("% 5d", a[i]);
+	  if(a[i] >= a[i+1])
+		 {
+	  	printf("\n   +Day %d: ", tang);	tang++;
+	   }	
+	}
+	
+}
+int main()
+{
+	int n;
+	printf("Nhap so luong phan tu: ");
+	scanf("%d", &n);
+	int a[n+1];
+	nhap(a, n);
+	sapxep(a, n);
+getch();
+}

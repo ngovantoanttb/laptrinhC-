@@ -1,0 +1,10 @@
+-- <math.h> trong C chua cac ham toan hoc thong dung
+**Mot so ham trong thu vien <math.h>
+- acos(double x) - Tra ve gia tri arccos cua x
+- asin(double x) - Tra ve gia tri arcsin cua x
+- atann(double x) - Tra ve gia tri arctan cua x
+- pow(double x, double y) - Tra ve gia tri x^y	
+- sqrt(double x) -> Tra ve gia tri can bac 2 cua x
+- ceil(double x) -> Tra ve gia tri nguyen nho nhat lon hon hoac bang x
+- abs(double x)  -> Tra ve gia tri tuyet doi x
+- floor(double x) -> Tra ve gia tri nguyen lon nhat nho hon hoac bang x

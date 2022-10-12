@@ -1,0 +1,14 @@
+--<stdio.h> trong thu vien C chua cac ham Input va Ouput co ban
+**Mot so ham thuong dung trong stdio.h
+- scanf("%d%c...",a,b....) -> Doc du lieu tu ban phim
+- printf("Van ban: %d%c...",a,b....) -> Ghi du lieu ra man hinh
+- gets(char *a) -> Cho phep nhap chuoi van ban
+- puts(char *a) -> Cho phep in chuoi ra man hinh
+- getchar(void) -> Lay 1 ky tu char tu stdin
+- getch(void)  -> Lay 1 ky tu tu stdin
+- fclose(FILE *stream) -> Dong file da cho
+- feof(FILE *stream) -> Kiem tra ket thuc file	
+- ferror(FILE *stream) -> Kiem tra loi file
+- fflush(stdin) -> Xoa bo nho dem
+- remove(char *filename) -> Xoa file	
+- rename(char *old_filename,char *new_filename) -> Doi ten file

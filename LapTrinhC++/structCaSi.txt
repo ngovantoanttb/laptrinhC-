@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+struct CaSi{
+	char ten[30],nhom[30];
+	int namsinh;
+};
+void nhap(CaSi A[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		printf("Nhap ten: "); fflush(stdin); gets(A[i].ten);
+		printf("Nhap nhom nhac: "); fflush(stdin); gets(A[i].nhom);
+		printf("Nhap nam sinh: "); scanf("%d", &A[i].namsinh);
+		printf("\n\n");
+	}
+}
+void xuat(CaSi A[], int n)
+{
+	printf("\n\n\n---------Danh sach ca si------------\n\n");
+	for(int i=0;i<n;i++)
+	printf("%-30s%-30s%-10d\n",A[i].ten, A[i].nhom, A[i].namsinh);
+}
+void timkiemSV(CaSi A[], int n)
+{
+	printf("\n\n----------Sap xep danh sach ca si teo ten--------------\n");
+	for(int i=0;i<n;i++)
+	{
+		for(int j=i+1;j<n;j++)
+		{
+			if(stricmp(A[j].ten, A[i].ten) < 0)
+			{
+				CaSi t=A[i]; A[i]=A[j]; A[j] = t;
+			}
+		}	
+		printf("%-30s%-30s%-10d\n",A[i].ten, A[i].nhom, A[i].namsinh);
+	}
+}
+int main()
+{
+	int n; 
+	printf("Nhap so luong sinh vien: "); scanf("%d",&n);
+	CaSi A[n];
+	nhap(A,n);
+	xuat(A, n);
+	timkiemSV(A,n);
+}

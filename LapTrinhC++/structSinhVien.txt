@@ -1,0 +1,43 @@
+#include stdio.h
+#include string.h
+struct Sinhvien{
+	char ten[30],que[30];
+	int namsinh;
+};
+void nhap(Sinhvien A[], int n)
+{
+	for(int i=0;in;i++)
+	{
+		printf(Nhap ten ); fflush(stdin); gets(A[i].ten);
+		printf(Nhap que quan ); fflush(stdin); gets(A[i].que);
+		printf(Nhap nam sinh ); scanf(%d, &A[i].namsinh);
+		printf(nn);
+	}
+}
+void xuat(Sinhvien A[], int n)
+{
+	printf(nnn---------Danh sach sinh vien-------------nn);
+	for(int i=0;in;i++)
+	printf(%-30s%-30s%-10dn,A[i].ten, A[i].que, A[i].namsinh);
+}
+void timkiemSV(Sinhvien A[], int n)
+{
+	char a[30];
+	printf(nn----------Tim kiem Sinh vien theo tenn);
+	printf(Nhap ten can tim kiem ); fflush(stdin); gets(a);
+	printf(nn);
+	for(int i=0;in;i++)
+	{
+		if(stricmp(a, A[i].ten)==0)
+			printf(%-30s%-30s%-10dn,A[i].ten, A[i].que, A[i].namsinh);
+	}
+}
+int main()
+{
+	int n; 
+	printf(Nhap so luong sinh vien ); scanf(%d,&n);
+	Sinhvien A[n];
+	nhap(A,n);
+	xuat(A, n);
+	timkiemSV(A,n);
+}
